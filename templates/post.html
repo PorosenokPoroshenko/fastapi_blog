@@ -1,9 +1,6 @@
-<html>
-<head>
-    <title>POST</title>
-    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-    <h1><a href="{{ url_for('read_post', id=id) }}">post ID: {{ id }}</a></h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Post{% endblock %}
+{% block content %}
+<h1>{{post.title}}</h1><br>
+<p>{{post.content}}</p>
+{% endblock %}
