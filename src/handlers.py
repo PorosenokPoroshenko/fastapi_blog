@@ -1,5 +1,5 @@
 from src.posts import router as api
-from fastapi import APIRouter, Request, Path, Depends
+from fastapi import APIRouter, Request, Path, Depends, Form
 from typing import Annotated
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
@@ -31,3 +31,9 @@ def read_post(
     post = api.get_post_by_id(post_id, db)
     context = dict(request=request, post=post)
     return templates.TemplateResponse("post.html", context)
+
+
+@router.get("/create_post", response_class=HTMLResponse)
+def read_create_post(request: Request):
+    context = dict(request=request)
+    return templates.TemplateResponse("create_post.html", context)

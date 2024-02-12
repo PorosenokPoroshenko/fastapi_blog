@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Path, Depends
+from fastapi import APIRouter, Path, Depends, Form
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from typing import Annotated
 
@@ -30,5 +31,10 @@ def get_post_by_id(post_id: Annotated[int, Path(ge=1)], db: Session = Depends(ge
 
 
 @router.post("/", response_model=schemas.Post)
-def create_post(post: schemas.PostCreate, db: Session = Depends(get_db)):
+def create_post(
+    title: Annotated[str, Form()],
+    content: Annotated[str, Form()],
+    db: Session = Depends(get_db),
+):
+    post = schemas.PostCreate(title=title, content=content)
     return service.create_post(db, post)
