@@ -37,3 +37,15 @@ def read_post(
 def read_create_post(request: Request):
     context = dict(request=request)
     return templates.TemplateResponse("create_post.html", context)
+
+
+@router.post("/create_post", response_class=HTMLResponse)
+def read_create_post(
+    request: Request,
+    title: Annotated[str, Form()],
+    content: Annotated[str, Form()],
+    db: Session = Depends(get_db),
+):
+    new_post = api.create_post(title, content, db)
+    context = dict(request=request, message="Post successfully created")
+    return templates.TemplateResponse("create_post.html", context)
