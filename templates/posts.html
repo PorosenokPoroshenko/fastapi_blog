@@ -3,7 +3,7 @@
 {% block content %}
 <p>
     {% for i in posts|sort(attribute="id", reverse=True) %}
-        Title: <a href="posts/{{ i.id }}">{{ i.title }}</a>
+        Date:{{i.date}} <a href="posts/{{ i.id }}">{{ i.title }}</a> 
         <br>
     {% endfor %}
 </p> 

@@ -12,16 +12,21 @@ from src.database import Base, engine
 from src.posts.models import Post
 
 
-Base.metadata.create_all(bind=engine)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    Base.metadata.create_all(bind=engine)
 
-with Session(engine) as session:
-    example_post = Post(
-        title="Example post", content="lorem ipsum", date=datetime.now()
-    )
-    session.add(example_post)
-    session.commit()
+    with Session(engine) as session:
+        example_post = Post(title="Example post", content="lorem ipsum")
+        session.add(example_post)
+        session.commit()
 
-app = FastAPI()
+    yield
+
+    Base.metadata.drop_all(engine)
+
+
+app = FastAPI(lifespan=lifespan)
 app.include_router(posts_api_router)
 app.include_router(pages_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")

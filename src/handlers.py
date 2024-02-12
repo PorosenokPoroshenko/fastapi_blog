@@ -28,19 +28,20 @@ def read_posts(request: Request, db: Session = Depends(get_db)):
 def read_post(
     request: Request, post_id: Annotated[int, Path(ge=1)], db: Session = Depends(get_db)
 ):
+
     post = api.get_post_by_id(post_id, db)
     context = dict(request=request, post=post)
     return templates.TemplateResponse("post.html", context)
 
 
 @router.get("/create_post", response_class=HTMLResponse)
-def read_create_post(request: Request):
+def create_post(request: Request):
     context = dict(request=request)
     return templates.TemplateResponse("create_post.html", context)
 
 
 @router.post("/create_post", response_class=HTMLResponse)
-def read_create_post(
+def create_post(
     request: Request,
     title: Annotated[str, Form()],
     content: Annotated[str, Form()],
