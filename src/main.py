@@ -12,16 +12,12 @@ from src.database import Base, engine
 from src.posts.models import Post
 
 
-
-
 Base.metadata.create_all(bind=engine)
 
 with Session(engine) as session:
     example_post = Post(title="Example post", content="lorem ipsum", date = datetime.now())
     session.add(example_post)
     session.commit()
-
-
 
 app = FastAPI()
 app.include_router(posts_router)
