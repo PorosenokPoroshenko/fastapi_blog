@@ -1,29 +1,73 @@
-/* styles.css */
-
+/* Center all content */
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a1a;
+    /* Dark background color */
+    color: #ffffff;
+    /* White text color */
     font-family: Arial, sans-serif;
 }
 
-h1 {
-    color: #333;
+/* Center forms */
+form {
+    width: 300px;
+    margin: auto;
 }
 
-a {
-    color: blue;
-    text-decoration: none;
+/* Style form elements */
+input[type="text"],
+input[type="password"],
+textarea,
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
     margin-bottom: 10px;
-    display: inline-block;
+    border: 1px solid #333333;
+    /* Dark border color */
+    border-radius: 5px;
+    background-color: #333333;
+    /* Dark background color */
+    color: #ffffff;
+    /* White text color */
+    font-family: Arial, sans-serif;
 }
 
-a:hover {
-    text-decoration: underline;
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #ffffff;
+    /* White border color on focus */
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+button {
+    cursor: pointer;
+    background-color: #007bff;
+    /* Primary button color */
+    color: #ffffff;
+    /* White text color */
+    border: none;
+    border-radius: 5px;
 }
 
-li {
-    margin-bottom: 10px;
+button:hover {
+    background-color: #0056b3;
+    /* Darker color on hover */
+}
+
+.container {
+    text-align: center;
+    /* Center the content horizontally */
+    padding-top: 20px;
+    /* Add some space above the content */
+}
+
+.container a {
+    display: block;
+    margin-top: 10px;
+    /* Adjust the margin to control the spacing between links */
 }

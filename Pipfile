@@ -4,6 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+sqlalchemy = "*"
+fastapi = "*"
+uvicorn = "*"
+pydantic-settings = "*"
+python-multipart = "*"
+jinja2 = "*"
 
 [dev-packages]
 

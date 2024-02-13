@@ -2,16 +2,11 @@
 <html lang="en">
 <head>
     {% block head %}
-    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/../static/styles.css" />
     <title>{% block title %}{% endblock %} - my Blob</title>
     {% endblock %}
 </head>
 <body>
     <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2024</a>.
-        {% endblock %}
-    </div>
 </body>
 </html>
