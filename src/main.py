@@ -6,10 +6,10 @@ from contextlib import asynccontextmanager
 import uvicorn
 from datetime import datetime
 
-from src.posts.router import router as posts_api_router
-from src.handlers import router as pages_router
-from src.database import Base, engine
-from src.posts.models import Post
+from .posts.router import router as posts_api_router
+from .handlers import router as pages_router
+from .database import Base, engine
+from .posts.models import Post
 
 
 @asynccontextmanager

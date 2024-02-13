@@ -3,8 +3,8 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from typing import Annotated
 
-from src.posts import schemas, service
-from src.database import get_db
+from . import schemas, service
+from ..database import get_db
 
 router = APIRouter(
     prefix="/api/posts",

@@ -1,11 +1,11 @@
-from src.posts import router as api
+from .posts import router as api
 from fastapi import APIRouter, Request, Path, Depends, Form
 from typing import Annotated
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
 from sqlalchemy.orm import Session
-from src.database import get_db
+from .database import get_db
 
 router = APIRouter(tags=["www"])
 

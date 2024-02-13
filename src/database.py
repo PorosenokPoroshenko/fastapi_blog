@@ -4,7 +4,7 @@ from sqlalchemy import (
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from src.config import config
+from .config import config
 
 engine = create_engine(config.DB_URL, echo=config.DB_ECHO)
 

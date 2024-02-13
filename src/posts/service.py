@@ -14,7 +14,13 @@ def get_latest_post(db: Session) -> models.Post:
 
 def get_posts(db: Session, skip: int = 0, limit: int = 100) -> models.Post:
     # skips {skip} posts and returns up to {limit} of them
-    return db.query(models.Post).offset(skip).limit(limit).all()
+    return (
+        db.query(models.Post)
+        .order_by(models.Post.date.desc())
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
 
 
 def create_post(db: Session, post: schemas.PostCreate) -> models.Post:
